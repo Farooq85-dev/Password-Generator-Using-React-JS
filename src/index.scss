@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+//Variables
+$boxShadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+$btnBg: #1c1a23;
+$btnBgHover: #000000;
+$btnColor: #ededed;
+$btnRadius: 10px;
+$btnPadding: 10px 20px;
+$btnFontWeight: 600px;
+$iconWidth: 30px;
+$iconHeight: 30px;
+
+//Mixins
+@mixin btnStyling() {
+  background-color: $btnBg;
+  color: $btnColor;
+  font-weight: $btnFontWeight;
+  border-radius: $btnRadius;
+  padding: $btnPadding;
+}
+
+@mixin btnHoverStyling() {
+  border: 1px solid white;
+  transition: ease 1s border;
+}
+
+* {
+  font-family: Montserrat !important;
+}
+
+.myImgMain {
+  .imgDiv {
+    box-shadow: $boxShadow;
+  }
+  .exploreBtn {
+    @include btnStyling();
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    &:hover {
+      @include btnHoverStyling();
+    }
+  }
+}
+
+.icon {
+  width: $iconWidth;
+  height: $iconHeight;
+}
