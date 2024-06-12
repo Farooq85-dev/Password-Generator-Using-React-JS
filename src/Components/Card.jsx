@@ -1,7 +1,6 @@
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Welcome_Img from "../assets/welcome-img.jpg";
-import Password_Img from "../assets/password-img.jpg";
 import "../index.scss";
 
 export default function CardComp({ image }) {
