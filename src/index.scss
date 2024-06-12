@@ -7,9 +7,11 @@ $btnBgHover: #000000;
 $btnColor: #ededed;
 $btnRadius: 10px;
 $btnPadding: 10px 20px;
-$btnFontWeight: 600px;
+$btnFontWeight: 500;
 $iconWidth: 30px;
 $iconHeight: 30px;
+$cardRaius: 10px;
+$cardPadding: 20px;
 
 //Mixins
 @mixin btnStyling() {
@@ -25,6 +27,20 @@ $iconHeight: 30px;
   transition: ease 1s border;
 }
 
+@mixin positioAbsloute() {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex($height) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $height;
+}
+
 * {
   font-family: Montserrat !important;
 }
@@ -34,11 +50,8 @@ $iconHeight: 30px;
     box-shadow: $boxShadow;
   }
   .exploreBtn {
+    @include positioAbsloute();
     @include btnStyling();
-    position: absolute !important;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     &:hover {
       @include btnHoverStyling();
     }
@@ -48,4 +61,71 @@ $iconHeight: 30px;
 .icon {
   width: $iconWidth;
   height: $iconHeight;
+}
+
+.mainPasswordGenerator {
+  @include flex(100vh);
+  background-color: $btnBg;
+  border-radius: $cardRaius;
+  .passwordGenerator {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 500px !important;
+    min-width: 150px !important;
+    background: rgb(215, 215, 215);
+    background: linear-gradient(
+      360deg,
+      rgba(215, 215, 215, 1) 0%,
+      rgba(204, 204, 204, 1) 100%
+    );
+    border-radius: $cardRaius;
+    padding: $cardPadding;
+
+    .passwordBtn {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      .generateBtn,
+      .copyBtn {
+        @include btnStyling();
+      }
+    }
+  }
+
+  .checkBox {
+    color: $btnBg !important;
+  }
+  .input .MuiInputLabel-root.Mui-focused {
+    color: $btnBg !important; /* Replace with your desired label color */
+  }
+
+  .input .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: $btnBg !important;
+  }
+
+  .slider {
+    color: $btnBg !important;
+  }
+}
+
+input{
+  font-weight: bold !important;
+}
+
+@media only screen and (max-width: 400px) {
+  .passwordBtn {
+    flex-direction: column;
+  }
+
+  .sliderBxWidth {
+    width: 200px !important;
+  }
+
+  .input {
+    width: 80% !important;
+  }
 }
